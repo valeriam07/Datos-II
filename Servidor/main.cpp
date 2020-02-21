@@ -12,7 +12,7 @@ int open_socket();
 void bindToPort(int,int);
 
 const int PORT = 7200;
-char *advice[] = {"RESPUESTA 1 \n ", "RESPUESTA 2 \n"};
+char *advice[] = {"RESPUESTA 1 \n ", "RESPUESTA 2\n"};
 
 
 int main() {
