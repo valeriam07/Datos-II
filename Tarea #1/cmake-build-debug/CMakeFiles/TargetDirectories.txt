@@ -1,0 +1,3 @@
+/home/valeria/CLionProjects/Servidor/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/valeria/CLionProjects/Servidor/cmake-build-debug/CMakeFiles/Servidor.dir
+/home/valeria/CLionProjects/Servidor/cmake-build-debug/CMakeFiles/edit_cache.dir
