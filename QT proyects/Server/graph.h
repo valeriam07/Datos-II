@@ -36,6 +36,7 @@ public:
     void listaAdyacencia();
     void deleteEdge(Node *origen, Node *destino);
     void anular();
+    void save(Node *origen, Node *destino, int value);
 
 };
 

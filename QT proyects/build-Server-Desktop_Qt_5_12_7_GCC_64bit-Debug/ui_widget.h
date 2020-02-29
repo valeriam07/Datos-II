@@ -36,24 +36,24 @@ public:
     QWidget *widget;
     QVBoxLayout *verticalLayout;
     QLabel *label;
-    QLineEdit *msj;
+    QLineEdit *Dj_origen;
     QLabel *label_2;
-    QLineEdit *msj_2;
+    QLineEdit *Dj_destino;
     QWidget *widget1;
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_6;
-    QLineEdit *lineEdit_2;
+    QLineEdit *origen;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_7;
-    QLineEdit *lineEdit_3;
+    QLineEdit *destino;
     QHBoxLayout *horizontalLayout_4;
     QLabel *label_8;
-    QLineEdit *lineEdit_4;
+    QLineEdit *value;
     QWidget *widget2;
     QHBoxLayout *horizontalLayout_5;
     QLabel *label_4;
-    QLineEdit *lineEdit;
+    QLineEdit *name;
 
     void setupUi(QWidget *Widget)
     {
@@ -129,11 +129,11 @@ public:
 
         verticalLayout->addWidget(label);
 
-        msj = new QLineEdit(widget);
-        msj->setObjectName(QString::fromUtf8("msj"));
-        msj->setStyleSheet(QString::fromUtf8("background-color: rgb(238, 238, 236);"));
+        Dj_origen = new QLineEdit(widget);
+        Dj_origen->setObjectName(QString::fromUtf8("Dj_origen"));
+        Dj_origen->setStyleSheet(QString::fromUtf8("background-color: rgb(238, 238, 236);"));
 
-        verticalLayout->addWidget(msj);
+        verticalLayout->addWidget(Dj_origen);
 
         label_2 = new QLabel(widget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
@@ -141,11 +141,11 @@ public:
 
         verticalLayout->addWidget(label_2);
 
-        msj_2 = new QLineEdit(widget);
-        msj_2->setObjectName(QString::fromUtf8("msj_2"));
-        msj_2->setStyleSheet(QString::fromUtf8("background-color: rgb(238, 238, 236);"));
+        Dj_destino = new QLineEdit(widget);
+        Dj_destino->setObjectName(QString::fromUtf8("Dj_destino"));
+        Dj_destino->setStyleSheet(QString::fromUtf8("background-color: rgb(238, 238, 236);"));
 
-        verticalLayout->addWidget(msj_2);
+        verticalLayout->addWidget(Dj_destino);
 
         widget1 = new QWidget(Widget);
         widget1->setObjectName(QString::fromUtf8("widget1"));
@@ -160,11 +160,11 @@ public:
 
         horizontalLayout_2->addWidget(label_6);
 
-        lineEdit_2 = new QLineEdit(widget1);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
-        lineEdit_2->setStyleSheet(QString::fromUtf8("background-color: rgb(238, 238, 236);"));
+        origen = new QLineEdit(widget1);
+        origen->setObjectName(QString::fromUtf8("origen"));
+        origen->setStyleSheet(QString::fromUtf8("background-color: rgb(238, 238, 236);"));
 
-        horizontalLayout_2->addWidget(lineEdit_2);
+        horizontalLayout_2->addWidget(origen);
 
 
         verticalLayout_2->addLayout(horizontalLayout_2);
@@ -176,11 +176,11 @@ public:
 
         horizontalLayout_3->addWidget(label_7);
 
-        lineEdit_3 = new QLineEdit(widget1);
-        lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
-        lineEdit_3->setStyleSheet(QString::fromUtf8("background-color: rgb(238, 238, 236);"));
+        destino = new QLineEdit(widget1);
+        destino->setObjectName(QString::fromUtf8("destino"));
+        destino->setStyleSheet(QString::fromUtf8("background-color: rgb(238, 238, 236);"));
 
-        horizontalLayout_3->addWidget(lineEdit_3);
+        horizontalLayout_3->addWidget(destino);
 
 
         verticalLayout_2->addLayout(horizontalLayout_3);
@@ -192,11 +192,11 @@ public:
 
         horizontalLayout_4->addWidget(label_8);
 
-        lineEdit_4 = new QLineEdit(widget1);
-        lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
-        lineEdit_4->setStyleSheet(QString::fromUtf8("background-color: rgb(238, 238, 236);"));
+        value = new QLineEdit(widget1);
+        value->setObjectName(QString::fromUtf8("value"));
+        value->setStyleSheet(QString::fromUtf8("background-color: rgb(238, 238, 236);"));
 
-        horizontalLayout_4->addWidget(lineEdit_4);
+        horizontalLayout_4->addWidget(value);
 
 
         verticalLayout_2->addLayout(horizontalLayout_4);
@@ -212,11 +212,11 @@ public:
 
         horizontalLayout_5->addWidget(label_4);
 
-        lineEdit = new QLineEdit(widget2);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-        lineEdit->setStyleSheet(QString::fromUtf8("background-color: rgb(238, 238, 236);"));
+        name = new QLineEdit(widget2);
+        name->setObjectName(QString::fromUtf8("name"));
+        name->setStyleSheet(QString::fromUtf8("background-color: rgb(238, 238, 236);"));
 
-        horizontalLayout_5->addWidget(lineEdit);
+        horizontalLayout_5->addWidget(name);
 
 
         retranslateUi(Widget);

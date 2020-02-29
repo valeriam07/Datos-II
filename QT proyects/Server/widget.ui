@@ -164,7 +164,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="msj">
+     <widget class="QLineEdit" name="Dj_origen">
       <property name="styleSheet">
        <string notr="true">background-color: rgb(238, 238, 236);</string>
       </property>
@@ -184,7 +184,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="msj_2">
+     <widget class="QLineEdit" name="Dj_destino">
       <property name="styleSheet">
        <string notr="true">background-color: rgb(238, 238, 236);</string>
       </property>
@@ -212,7 +212,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_2">
+       <widget class="QLineEdit" name="origen">
         <property name="styleSheet">
          <string notr="true">background-color: rgb(238, 238, 236);</string>
         </property>
@@ -230,7 +230,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_3">
+       <widget class="QLineEdit" name="destino">
         <property name="styleSheet">
          <string notr="true">background-color: rgb(238, 238, 236);</string>
         </property>
@@ -248,7 +248,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_4">
+       <widget class="QLineEdit" name="value">
         <property name="styleSheet">
          <string notr="true">background-color: rgb(238, 238, 236);</string>
         </property>
@@ -276,7 +276,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QLineEdit" name="name">
       <property name="styleSheet">
        <string notr="true">background-color: rgb(238, 238, 236);</string>
       </property>

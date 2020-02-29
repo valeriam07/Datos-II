@@ -1,6 +1,16 @@
 #include "widget.h"
+#include "graph.h"
 
 #include <QApplication>
+
+void generateGraph(){
+    Graph g;
+    g.addNode("A");
+    g.addNode("B");
+    g.addEdge("A","B",10);
+
+}
+
 
 int main(int argc, char *argv[])
 {
@@ -10,3 +20,4 @@ int main(int argc, char *argv[])
     w.show();
     return a.exec();
 }
+

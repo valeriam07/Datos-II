@@ -17,6 +17,17 @@ Widget::Widget(QWidget *parent)
         QTextStream T(mSocket);
         QString s = T.readAll();
         ui -> listWidget -> addItem(s);
+
+        QTextStream Node(mSocket);
+        QString s2 = Node.readAll();
+        ui -> listWidget -> addItem(s2);
+
+
+        QTextStream Edge(mSocket);
+        QString s3 = Node.readAll();
+        ui -> listWidget -> addItem(s3);
+
+
         std::cout << s.toUtf8().constData() << std::endl;
 
 
@@ -33,7 +44,7 @@ Widget::~Widget()
 
 void Widget::on_conectar_clicked()
 {
-    //cout << "conectando..." << endl;
+    cout << "conectando..." << endl;
     mSocket->connectToServer("MiServidor");
 
 }

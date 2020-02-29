@@ -1,4 +1,5 @@
 #include "graph.h"
+#include <fstream>
 
 void Graph::init()
 {
@@ -92,6 +93,8 @@ void Graph :: addEdge(string origenName, string destinoName, int value){
 
     }
 
+    save(origen, destino, value);
+
     cout << "\n** Se añadio un nuevo edge: ** \norigen: " << origen->name << "\ndestino: " << destino ->name << "\nvalue: " << value << "\n" << endl;
 }
 
@@ -157,5 +160,15 @@ void Graph ::deleteEdge(Node *origen, Node *destino){
             cout << "esos dos vertices no estan conectados"<< endl;
         }
 
+    }
+}
+
+void Graph::save(Node *origen, Node *destino, int value){
+    std::ofstream myfile("/Server/GraphData.txt");
+
+    if(true){
+        myfile << origen->name;
+        myfile << destino->name;
+        myfile << value;
     }
 }
