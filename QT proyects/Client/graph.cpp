@@ -133,7 +133,7 @@ void Graph ::deleteEdge(Node *origen, Node *destino){
 
     actual = origen ->adyacente;
 
-    if(actual = NULL){
+    if(actual == NULL){
         cout << "EL vertice origen no tiene aristas"<< endl;
 
     }else if(actual ->adyacente == destino){
