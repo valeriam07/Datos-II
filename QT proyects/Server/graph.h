@@ -11,6 +11,7 @@ class Node{         //vertice
     Edge *adyacente;
     int edgesNum;
     Edge *edges[100];  //conexion entre dos vertices
+public:
     string name;
 
     friend class Graph;
@@ -27,6 +28,7 @@ class Edge{     //arista
 
 class Graph
 {
+
     Node *h;
 
 public:
@@ -41,7 +43,11 @@ public:
     void anular();
     void save(Node *origen, Node *destino, int value);
     void dijkstra(string origenName, string destinoName);
+    int exists(string name);
 
 };
+
+static Graph g;
+
 
 #endif // GRAPH_H

@@ -1,6 +1,7 @@
 #include "graph.h"
 #include <fstream>
 
+
 void Graph::init()
 {
     h = NULL;       //referencia inicial
@@ -36,6 +37,8 @@ int Graph::size(){
 Node *Graph :: getNode(string name){
     Node *aux;
     aux = h;
+
+
     while (aux != NULL){
         if(aux -> name == name){
             //cout << aux << endl;
@@ -43,7 +46,34 @@ Node *Graph :: getNode(string name){
         }
         aux = aux -> sig;
     }
+
     return NULL;
+}
+
+int Graph :: exists(string name){
+
+    Node *aux = new Node;
+
+    ifstream myfile("GraphData.txt");
+
+    std::string cadena;
+
+    myfile >> cadena;
+
+    cout<< "cadena "<< cadena << endl;
+
+
+    for(std::string::size_type i = 0; i < cadena.size(); ++i) {
+        if(cadena.compare(i, 1, name) == 0){ //i = indice, 1 = num chars
+           aux->name = name;
+           cout<<"El nodo ya existe pero est nuevo"<<endl;
+           return 1;
+        }
+
+    }
+    cout<< "No existe"<< endl;
+    return 0;
+
 }
 
 void Graph :: addNode(string name){
@@ -173,9 +203,9 @@ void Graph::save(Node *origen, Node *destino, int value){
     if(myfile.fail()){
         cout<< "no se pudo abrir el archivo" <<endl;
     }
-    myfile << origen->name +", ";
-    myfile << destino ->name +", ";
-    myfile << value << endl;;
+    myfile << origen->name +",";
+    myfile << destino ->name +",";
+    myfile << value << ":";
 
 
     myfile.close();
