@@ -1,7 +1,6 @@
 #include "graph.h"
 #include <fstream>
 
-
 void Graph::init()
 {
     h = NULL;       //referencia inicial
@@ -39,7 +38,7 @@ Node *Graph :: getNode(string name){
     aux = h;
     while (aux != NULL){
         if(aux -> name == name){
-            cout << aux << endl;
+            //cout << aux << endl;
             return aux;
         }
         aux = aux -> sig;
@@ -80,22 +79,23 @@ void Graph :: addEdge(string origenName, string destinoName, int value){
     Edge *aux;
     aux = origen ->adyacente;
 
-    if(aux == NULL){
+    if(aux == NULL){                //cuando no hay conexiones
         origen ->adyacente = nueva;
         nueva -> adyacente = destino;
+        origen->edges[0] = nueva;
+        origen->edgesNum++;
 
     }else{
-        while (aux != NULL) {
-            aux = aux->sig;
-
-        }
-        aux->sig =nueva;
+        origen->edges[origen->edgesNum] = nueva;
         nueva->adyacente = destino;
+        origen->edgesNum++;
+    }
 
+    for(int j=1; origen->edges[j-1]!=0;j++){
+        cout << origen->edges[j-1]->value<< ", ";
     }
 
     save(origen, destino, value);
-
     cout << "\n** Se añadio un nuevo edge: ** \norigen: " << origen->name << "\ndestino: " << destino ->name << "\nvalue: " << value << "\n" << endl;
 }
 
@@ -179,6 +179,77 @@ void Graph::save(Node *origen, Node *destino, int value){
 
 
     myfile.close();
+
+}
+
+void Graph :: dijkstra(string origenName, string destinoName){
+    Node *origen = getNode(origenName);
+    Node *destino = getNode(destinoName);
+    int distanciaRecorrida=0;
+    Node prev;
+    string camino = origenName + " ,";
+    int i=0;
+
+    while(origen->edges[i] != NULL){
+        int d1 =0;
+        int d2 =0;
+
+        if(origen->edges[i]->adyacente->name == destinoName && origen->edges[i+1]== NULL){
+            cout<< "\nEl camino mas corto es: "<< camino<< destinoName<<endl;
+            break;
+        }else{
+            d1 = distanciaRecorrida + origen->edges[i]->value;
+            if(origen->edges[i+1] != NULL){
+                d2 = distanciaRecorrida +origen->edges[i+1]->value;
+            }
+            cout <<d1<<endl;
+            cout <<d2<<endl;
+            cout<<origen->edges[i]->adyacente->name<< endl;
+            cout<<destino->name<<endl;
+
+            if(d1<=d2 && origen->edges[i+1]->adyacente->name == destinoName){
+                cout<< "\nEl camino mas corto es: "<< camino+ destinoName<< endl;
+            }
+
+            else if(d1<=d2){
+
+
+                if(origen->edges[i+2] != NULL){
+                    i++;
+
+                }else{
+                    cout<<"pasa por:"<<origen->edges[i]->adyacente->name;
+                    distanciaRecorrida = d1;
+                    camino += origen->edges[i]->adyacente->name + " ,";
+                    origen = origen ->edges[i]->adyacente;
+                    i=0;
+                }
+
+
+            }else{
+
+                if(origen->edges[i+2] != NULL){
+                    cout<<"falta lista"<<endl;
+                    i++;
+                }else{
+
+                    cout<<"pasa por:"<<origen->edges[i]->adyacente->name;
+                    camino += origen->edges[i]->adyacente->name + " ,";
+                    origen = origen ->edges[i]->adyacente;
+                    cout<<"\nel nuevo origen es: "<<origen->name<< endl;;
+                    cout<<origen->edges[0]<<endl;
+                    i=0;
+                }
+
+            }
+
+
+        }
+
+
+    }
+    cout<< "\n" << distanciaRecorrida;
+
 
 }
 

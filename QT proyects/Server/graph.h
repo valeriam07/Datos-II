@@ -8,8 +8,11 @@ class Edge;
 
 class Node{         //vertice
     Node *sig;
-    Edge *adyacente;  //conexion entre dos vertices
+    Edge *adyacente;
+    int edgesNum;
+    Edge *edges[100];  //conexion entre dos vertices
     string name;
+
     friend class Graph;
 
 };
@@ -37,6 +40,7 @@ public:
     void deleteEdge(Node *origen, Node *destino);
     void anular();
     void save(Node *origen, Node *destino, int value);
+    void dijkstra(string origenName, string destinoName);
 
 };
 
