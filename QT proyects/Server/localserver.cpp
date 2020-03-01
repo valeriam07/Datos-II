@@ -1,6 +1,7 @@
 #include "localserver.h"
 #include <QLocalSocket>
 #include <QTextStream>
+#include "graph.h"
 
 
 
@@ -15,10 +16,15 @@ localServer::localServer(QObject *parent) : QLocalServer(parent)
 
 
 void localServer :: envia(const QString &Dj_origen, const QString &Dj_destino, const QString name, const QString origen,const QString destino, QString value){
+
+   Graph g;
+   g.init();
+
     if(mSocket){
         QTextStream T(mSocket);
         QTextStream Node(mSocket);
         QTextStream Edge(mSocket);
+
 
         if(Dj_origen.isNull() != true && Dj_destino.isNull() != true){
             T << "\n\n\n*** Dijkstra ***\nOrigen: " + Dj_origen;
@@ -41,6 +47,10 @@ void localServer :: envia(const QString &Dj_origen, const QString &Dj_destino, c
             Edge << "*** Nuevo Edge ***\nOrigen del nuevo Edge: " + origen;
             Edge << "\nDestino del nuevo Edge: " +destino;
             Edge << "\nValor del nuevo Edge: " +value;
+            g.addNode(origen.toStdString());
+            g.addNode(destino.toStdString());
+            g.addEdge(origen.toStdString(), destino.toStdString(), value.toInt());
+
         }else{
             Edge << "*** Nuevo Edge ***\nNo se puede realizar la operacion, datos incompletos.";
         }

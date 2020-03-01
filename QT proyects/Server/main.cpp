@@ -5,6 +5,7 @@
 
 void generateGraph(){
     Graph g;
+    g.init();
     g.addNode("A");
     g.addNode("B");
     g.addEdge("A","B",10);
@@ -14,6 +15,7 @@ void generateGraph(){
 
 int main(int argc, char *argv[])
 {
+    generateGraph();
     QApplication a(argc, argv);
     a.setStyle("fusion");
     Widget w;

@@ -1,6 +1,7 @@
 #include "graph.h"
 #include <fstream>
 
+
 void Graph::init()
 {
     h = NULL;       //referencia inicial
@@ -64,7 +65,7 @@ void Graph :: addNode(string name){
         aux->sig = nuevo;
     }
 
-    cout << "se añadio un nuevo nodo: "<< nuevo << name << endl;
+    cout << "se añadio un nuevo nodo: "<< name << endl;
 }
 
 void Graph :: addEdge(string origenName, string destinoName, int value){
@@ -164,11 +165,21 @@ void Graph ::deleteEdge(Node *origen, Node *destino){
 }
 
 void Graph::save(Node *origen, Node *destino, int value){
-    std::ofstream myfile("/Server/GraphData.txt");
+    ofstream myfile;
+    myfile.open("GraphData.txt",fstream::out | fstream::app);
 
-    if(true){
-        myfile << origen->name;
-        myfile << destino->name;
-        myfile << value;
+    cout<<"in"<<endl;
+
+    if(myfile.fail()){
+        cout<< "no se pudo abrir el archivo" <<endl;
     }
+    myfile << origen->name +", ";
+    myfile << destino ->name +", ";
+    myfile << value << endl;;
+
+
+    myfile.close();
+
 }
+
+

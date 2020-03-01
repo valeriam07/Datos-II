@@ -5,6 +5,7 @@
 #include "localserver.h"
 #include <QTextStream>
 #include "graph.h"
+#include "fstream"
 
 using namespace std;
 
@@ -25,8 +26,7 @@ Widget::~Widget()
 
 void Widget::on_iniciar_clicked()
 {
-    cout << "entra" <<endl;
-    if( !mLocalServer -> listen("MiServidor")){
+    if( !mLocalServer -> listen("MiServidor4")){
         cout << "Error en el server" <<endl;
     }else{
         cout<< "Se inicio el enlace..." <<endl;
@@ -46,7 +46,7 @@ void Widget::on_enviar_clicked()
 
 void Widget::on_quitar_clicked()
 {
+    remove("GraphData.txt");
     close();
 }
-
 
