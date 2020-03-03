@@ -89,8 +89,6 @@ int Graph :: exists(string name){
 
     myfile >> cadena;
 
-    cout<< "cadena "<< cadena << endl;
-
 
     for(std::string::size_type i = 0; i < cadena.size(); ++i) {
         if(cadena.compare(i, 1, name) == 0){ //i = indice, 1 = num chars
