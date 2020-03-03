@@ -111,5 +111,5 @@ void localServer :: envia(const QString &Dj_origen, const QString &Dj_destino, c
         }
         mSocket -> flush();
 
-    } cout << "ERROR"<< endl;
+    }
 }

@@ -1,6 +1,6 @@
 #include "graph.h"
 #include <fstream>
-
+#include <QMessageBox>
 
 void Graph::init()
 {
@@ -99,34 +99,36 @@ void Graph :: addNode(string name){
 
 void Graph :: addEdge(string origenName, string destinoName, int value){
 
-    Node *origen = getNode(origenName);
-    Node *destino = getNode(destinoName);
-    Edge *nueva = new Edge;
-    nueva-> value = value;
-    nueva->sig = NULL;
-    nueva->adyacente = NULL;
+    try{
+        Node *origen = getNode(origenName);
+        Node *destino = getNode(destinoName);
+        Edge *nueva = new Edge;
+        nueva-> value = value;
+        nueva->sig = NULL;
+        nueva->adyacente = NULL;
 
-    Edge *aux;
-    aux = origen ->adyacente;
+        Edge *aux;
+        aux = origen ->adyacente;
 
-    if(aux == NULL){                //cuando no hay conexiones
-        origen ->adyacente = nueva;
-        nueva -> adyacente = destino;
-        origen->edges[0] = nueva;
-        origen->edgesNum++;
+        if(aux == NULL){                //cuando no hay conexiones
+            origen ->adyacente = nueva;
+            nueva -> adyacente = destino;
+            origen->edges[0] = nueva;
+            origen->edgesNum++;
 
-    }else{
-        origen->edges[origen->edgesNum] = nueva;
-        nueva->adyacente = destino;
-        origen->edgesNum++;
+        }else{
+            origen->edges[origen->edgesNum] = nueva;
+            nueva->adyacente = destino;
+            origen->edgesNum++;
+        }
+
+
+        save(origen, destino, value);
+        cout << "\n** Se añadio un nuevo edge: ** \norigen: " << origen->name << "\ndestino: " << destino ->name << "\nvalue: " << value << "\n" << endl;
+
+    }catch(...){
+        cout<< "ERROR"<< endl;
     }
-
-    /*for(int j=1; origen->edges[j-1]!=0;j++){
-        cout << origen->edges[j-1]->value<< ", ";       DA ERROR
-    }*/
-
-    save(origen, destino, value);
-    cout << "\n** Se añadio un nuevo edge: ** \norigen: " << origen->name << "\ndestino: " << destino ->name << "\nvalue: " << value << "\n" << endl;
 }
 
 void Graph :: listaAdyacencia(){    //lista de conexiones entre los nodos
@@ -295,6 +297,9 @@ void Graph :: dijkstra(string origenName, string destinoName){
     int i=0;
 
 
+    QMessageBox result;
+
+
     while(origen->edges[i] != NULL){
         cout<< "ENTRA"<<endl;
         int d1 =0;
@@ -302,10 +307,16 @@ void Graph :: dijkstra(string origenName, string destinoName){
 
         if(origen->edges[i]->adyacente->name == destinoName || origen->edges[i+1]== NULL){
             cout<< "\nEl camino mas corto es: "<< camino<< destinoName<<endl;
+            QString res = QString::fromStdString(camino+ destinoName);
+            result.setText("El camino mas corto es: " + res);
+            result.exec();
             break;
 
         }else if(origen->edges[i+1]->adyacente->name == destinoName){
             cout<< "\nEl camino mas corto es: "<< camino<< destinoName<<endl;
+            QString res = QString::fromStdString(camino+ destinoName);
+            result.setText("El camino mas corto es: " + res);
+            result.exec();
             break;
 
         }else{
@@ -319,6 +330,9 @@ void Graph :: dijkstra(string origenName, string destinoName){
 
                 if(d1<=d2 && origen->edges[i+1]->adyacente->name == destinoName){
                     cout<< "\nEl camino mas corto es: "<< camino+ destinoName<< endl;
+                    QString res = QString::fromStdString(camino + destinoName);
+                    result.setText("El camino mas corto es: " + res);
+                    result.exec();
                     break;
                 }
             }else{
