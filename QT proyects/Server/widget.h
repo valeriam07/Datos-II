@@ -17,6 +17,8 @@ class Widget : public QWidget
 
 public:
     explicit Widget(QWidget *parent = 0);
+    void generateGraph();
+
     ~Widget();
 
 private slots:

@@ -3,7 +3,8 @@
 #include <QTextStream>
 #include "graph.h"
 
-
+static string inicio;
+static string final;
 
 localServer::localServer(QObject *parent) : QLocalServer(parent)
 {
@@ -14,10 +15,41 @@ localServer::localServer(QObject *parent) : QLocalServer(parent)
     });
 }
 
+string localServer :: getInicio(){
+    return inicio;
+}
 
-void localServer :: envia(const QString &Dj_origen, const QString &Dj_destino, const QString name, const QString origen,const QString destino, QString value){
+void localServer :: sendDijkstra(){
 
-    cout<< "se inicio el grafo"<< endl;
+        Graph g;
+
+        g.init();
+        g.addNode("A");
+        g.addNode("B");
+        g.addNode("C");
+        g.addNode("D");
+        g.addNode("E");
+
+        g.addEdge("A","B",2);
+        try {
+            g.addEdge("B", "C",2);
+            g.addEdge("A","D", 10);
+            g.addEdge("C", "D", 3);
+            g.addEdge("D", "E", 2);
+            g.addEdge("A", "C", 5);
+
+        } catch (...) {
+            cout<< "ERROR"<< endl;
+        }
+
+        g.dijkstra(inicio, final);
+
+}
+
+
+
+
+void localServer :: envia(const QString &Dj_origen, const QString &Dj_destino, const QString name, const QString origen,const QString destino, QString value, Graph g){
 
     if(mSocket){
         QTextStream T(mSocket);
@@ -28,9 +60,14 @@ void localServer :: envia(const QString &Dj_origen, const QString &Dj_destino, c
         if(Dj_origen != NULL && Dj_destino != NULL){
             T << "\n\n\n*** Dijkstra ***\nOrigen: " + Dj_origen;
             T << "\nDestino: " + Dj_destino;
-            //g.dijkstra(Dj_origen.toStdString(), Dj_destino.toStdString());
 
+            inicio = Dj_origen.toStdString();
+            final = Dj_destino.toStdString();
 
+            cout<< "INICIO: "<< inicio<< endl;
+            cout<< "FINAL: "<< final<< endl;
+
+            sendDijkstra();
 
         }else{
             T << "\n\n\n*** Dijkstra ***\nNo se puede realizar la operacion, datos incompletos.";
@@ -74,5 +111,5 @@ void localServer :: envia(const QString &Dj_origen, const QString &Dj_destino, c
         }
         mSocket -> flush();
 
-    }
+    } cout << "ERROR"<< endl;
 }
