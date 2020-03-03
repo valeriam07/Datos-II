@@ -35,7 +35,7 @@ Widget::~Widget()
  */
 void Widget::on_iniciar_clicked()
 {
-    if( !mLocalServer -> listen("MiServidor54")){
+    if( !mLocalServer -> listen("MiServidor68")){
         cout << "Error en el server" <<endl;
     }else{
         cout<< "Se inicio el enlace..." <<endl;

@@ -350,14 +350,14 @@ void Graph :: dijkstra(string origenName, string destinoName){
         if(origen->edges[i]->adyacente->name == destinoName || origen->edges[i+1]== NULL){
             cout<< "\nEl camino mas corto es: "<< camino<< destinoName<<endl;
             QString res = QString::fromStdString(camino+ destinoName);
-            result.setText("El camino mas corto es: " + res);
+            result.setText("El camino más corto es: " + res);
             result.exec();
             break;
 
         }else if(origen->edges[i+1]->adyacente->name == destinoName){
             cout<< "\nEl camino mas corto es: "<< camino<< destinoName<<endl;
             QString res = QString::fromStdString(camino+ destinoName);
-            result.setText("El camino mas corto es: " + res);
+            result.setText("El camino más corto es: " + res);
             result.exec();
             break;
 
@@ -373,7 +373,7 @@ void Graph :: dijkstra(string origenName, string destinoName){
                 if(d1<=d2 && origen->edges[i+1]->adyacente->name == destinoName){
                     cout<< "\nEl camino mas corto es: "<< camino+ destinoName<< endl;
                     QString res = QString::fromStdString(camino + destinoName);
-                    result.setText("El camino mas corto es: " + res);
+                    result.setText("El camino más corto es: " + res);
                     result.exec();
                     break;
                 }

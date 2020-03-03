@@ -60,6 +60,6 @@ Widget::~Widget()
 void Widget::on_conectar_clicked()
 {
     cout << "conectando..." << endl;
-    mSocket->connectToServer("MiServidor54");
+    mSocket->connectToServer("MiServidor68");
 
 }
