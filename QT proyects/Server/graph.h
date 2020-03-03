@@ -42,7 +42,7 @@ public:
     void deleteEdge(Node *origen, Node *destino);
     void anular();
     void save(Node *origen, Node *destino, int value);
-    void init_dijkstra(string origenName, string destinoName);
+    void searchInFile();
     void dijkstra(string origenName, string destinoName);
     int exists(string name);
 

@@ -10,6 +10,11 @@
 static Graph g;
 using namespace std;
 
+/**
+ * @brief Widget::Widget
+ * Inicializa la ventana principal del servidor
+ * @param parent
+ */
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
@@ -24,7 +29,10 @@ Widget::~Widget()
     delete ui;
 }
 
-
+/**
+ * @brief Widget::on_iniciar_clicked
+ * Al presionar el boton iniciar servidor se conecta a un servidor y espera a que el cliente se conecte
+ */
 void Widget::on_iniciar_clicked()
 {
     if( !mLocalServer -> listen("MiServidor54")){
@@ -36,6 +44,10 @@ void Widget::on_iniciar_clicked()
 
 }
 
+/**
+ * @brief Widget::on_enviar_clicked
+ * Al presionar el boton enviar se envian todos los datos obtenidos de la interfaz grafica al cliente
+ */
 void Widget::on_enviar_clicked()
 {
 
@@ -46,6 +58,10 @@ void Widget::on_enviar_clicked()
 
 }
 
+/**
+ * @brief Widget::on_quitar_clicked
+ * Al presionar el boton quitar se cerrara la aplicacion
+ */
 void Widget::on_quitar_clicked()
 {
 

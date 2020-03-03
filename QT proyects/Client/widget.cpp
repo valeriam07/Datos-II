@@ -5,6 +5,14 @@
 
 using namespace std;
 
+/**
+ * @brief Widget::Widget
+ * Es la funcion principal de la interfaz grafica del cliente, esta recibe
+ * los datos enviados por el servidor por medio de sockets y los muestra en la ventana
+ *
+ * @param parent ventana principal
+ */
+
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
@@ -36,10 +44,17 @@ Widget::Widget(QWidget *parent)
 
 }
 
+
 Widget::~Widget()
 {
     delete ui;
 }
+
+/**
+ * @brief Widget::on_conectar_clicked
+ * Al presional el boton conectar, el cliente realiza la conexion con el servidor
+ *
+ */
 
 
 void Widget::on_conectar_clicked()

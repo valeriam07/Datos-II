@@ -2,11 +2,20 @@
 #include <fstream>
 #include <QMessageBox>
 
+/**
+ * @brief Graph::init
+ * Inicializa el grafo
+ */
 void Graph::init()
 {
     h = NULL;       //referencia inicial
 }
 
+/**
+ * @brief Graph::empty
+ * Identifica si el grafo esta vacio
+ * @return un bool, true o false
+ */
 bool Graph::empty(){
     if(h == NULL){
         //cout << "esta vacio" << endl;
@@ -18,6 +27,11 @@ bool Graph::empty(){
     }
 }
 
+/**
+ * @brief Graph::size
+ * Funcion que identifica el numero de nodos de un grafo
+ * @return el size del grafo
+ */
 int Graph::size(){
 
    int cont = 0;
@@ -33,6 +47,14 @@ int Graph::size(){
     return cont;
 
 }
+
+/**
+ * @brief Graph::getNode
+ * busca el nodo al cual le corresponde el nombre pasado por parametro
+ * en un grafo
+ * @param name nombre del nodo
+ * @return nodo encontrado, en caso de que exista
+ */
 
 Node *Graph :: getNode(string name){
     Node *aux;
@@ -50,6 +72,13 @@ Node *Graph :: getNode(string name){
     return NULL;
 }
 
+/**
+ * @brief Graph::exists
+ * Verfica si un nodo ya existe segun la informacion guardada en un archivo .txt
+ * @param name nombre del nodo
+ * @return el nodo, en caso de que exista
+ */
+
 int Graph :: exists(string name){
 
     Node *aux = new Node;
@@ -66,7 +95,7 @@ int Graph :: exists(string name){
     for(std::string::size_type i = 0; i < cadena.size(); ++i) {
         if(cadena.compare(i, 1, name) == 0){ //i = indice, 1 = num chars
            aux->name = name;
-           cout<<"El nodo ya existe pero est nuevo"<<endl;
+           cout<<"El nodo ya existe"<<endl;
            return 1;
         }
 
@@ -76,6 +105,11 @@ int Graph :: exists(string name){
 
 }
 
+/**
+ * @brief Graph::addNode
+ * Crea un nuevo nodo y lo agrega al grafo correspondiente
+ * @param name nombre del nuevo nodo
+ */
 void Graph :: addNode(string name){
     Node  *nuevo = new Node;
     nuevo -> name = name;
@@ -97,6 +131,13 @@ void Graph :: addNode(string name){
     cout << "se añadio un nuevo nodo: "<< name << endl;
 }
 
+/**
+ * @brief Graph::addEdge
+ * Crea un nuevo edge o arista en el grafo correspondiente
+ * @param origenName nombre del nodo de origen
+ * @param destinoName nombre del nodo destino
+ * @param value extension de la arista
+ */
 void Graph :: addEdge(string origenName, string destinoName, int value){
 
     try{
@@ -162,6 +203,12 @@ void Graph :: anular(){         //elimina el grafo completo
     }
 }
 
+/**
+ * @brief Graph::deleteEdge
+ * Elimina la conexion entre dos nodos
+ * @param origen nodo de origen de la arista
+ * @param destino nodo destino de la arista
+ */
 void Graph ::deleteEdge(Node *origen, Node *destino){
 
     int band = 0;
@@ -196,6 +243,13 @@ void Graph ::deleteEdge(Node *origen, Node *destino){
     }
 }
 
+/**
+ * @brief Graph::save
+ * Guarda las conexiones, con sus respectivos nodos y valores en un archivos .txt
+ * @param origen nodo de origen
+ * @param destino nodo destino
+ * @param value valor de la arista
+ */
 void Graph::save(Node *origen, Node *destino, int value){
     ofstream myfile;
     myfile.open("GraphData.txt",fstream::out | fstream::app);
@@ -214,31 +268,24 @@ void Graph::save(Node *origen, Node *destino, int value){
 
 }
 
-void Graph :: init_dijkstra(string origenName, string destinoName){
+
+/**
+ * @brief Graph::searchInFile
+ * Busca en el archivo .txt que guarda la informacion del grafo y genera
+ * un grafo a partir de la informacion encontrada
+ */
+void Graph :: searchInFile(){
 
 
-    init();
-    addNode("A");
-    addNode("B");
-    addNode("C");
-    addNode("D");
-    addNode("E");
-
-    addEdge("A","B",2);
-    addEdge("B", "C",2);
-    addEdge("A","D", 10);
-    addEdge("C", "D", 3);
-    addEdge("D", "E", 2);;
-
-    //dijkstra("A", "E");
-
-    /*ifstream myfile("GraphData.txt");
+    ifstream myfile("GraphData.txt");
 
     std::string cadena;
 
     myfile >> cadena;
 
     cout<< "cadena "<< cadena << endl;
+
+    remove("GraphData.txt");
 
 
     for(std::string::size_type i = 0; i <= cadena.size(); ++i) {
@@ -270,22 +317,17 @@ void Graph :: init_dijkstra(string origenName, string destinoName){
 
         }else if(cadena.compare(i,1,":")==0 || cadena.compare(i,1,".")==0){
 
-        }else{*/
+        }
 
-            /*std::string s(1,cadena[i]);
-            if(g.getNode(s) == NULL){
-                g.addNode(s);*/
-
-            //}
-       // }
-
-
-
-      //dijkstra(origenName,destinoName);
-
-
+    }
 }
 
+/**
+ * @brief Graph::dijkstra
+ * Utiliza el algoritmo dijkstra para encontar el camino mas cercano entre dos nodos de un grafo
+ * @param origenName nombre del nodo de origen o inicio del recorrido
+ * @param destinoName nombre del nodo destino o final del recorrido
+ */
 void Graph :: dijkstra(string origenName, string destinoName){
 
     //init_dijkstra(origenName, destinoName);

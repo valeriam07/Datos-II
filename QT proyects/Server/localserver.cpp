@@ -6,6 +6,11 @@
 static string inicio;
 static string final;
 
+/**
+ * @brief localServer::localServer
+ * Inicializa el servidor local y genera la conexion del mismo
+ * @param parent
+ */
 localServer::localServer(QObject *parent) : QLocalServer(parent)
 {
     mSocket = nullptr;
@@ -15,10 +20,11 @@ localServer::localServer(QObject *parent) : QLocalServer(parent)
     });
 }
 
-string localServer :: getInicio(){
-    return inicio;
-}
-
+/**
+ * @brief localServer::sendDijkstra
+ * Genera un grafo predeterminado y con la informacion recolectada de los sockets
+ * envia a la funcion dijkstra
+ */
 void localServer :: sendDijkstra(){
 
         Graph g;
@@ -48,7 +54,17 @@ void localServer :: sendDijkstra(){
 
 
 
-
+/**
+ * @brief localServer::envia
+ * Funcion que envia los datos desde el servidor al cliente
+ * @param Dj_origen Nodo de origen para la funcion dijkstra
+ * @param Dj_destino Nodo de destino para la funcion dijkstra
+ * @param name nombre para crear un nuevo nodo
+ * @param origen nombre del origen para crear una nueva arista
+ * @param destino nombre del destino para crear una nueva arista
+ * @param value valor de la nueva arista
+ * @param g grafo al cual se le ralizan algunas funciones
+ */
 void localServer :: envia(const QString &Dj_origen, const QString &Dj_destino, const QString name, const QString origen,const QString destino, QString value, Graph g){
 
     if(mSocket){
