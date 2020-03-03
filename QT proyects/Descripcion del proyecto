@@ -1,0 +1,11 @@
+Trabajo Extraclase #1
+Estructuras y Algoritmos de Datos II
+
+La tarea consiste en implementar el algortimo Dijkstra mediante una aplicacion que utilice las conexiones
+cliente/servidor, donde el usuario pueda selecionar los nodos de inicio y final del recorrido y obtenga el
+resultado, que en este caso es el camino mas corto entre los dos nodos de un grafo. 
+
+Para planear el desarrollo de la tarea se implemento el uso de Boards de Jira y tableros de proyectos en GitHub,
+esto con el proposito de dividir todo en objetivos mas pequeños y tener una vision mas amplia del proyecto.
+
+El link del tablero de Jira es : https://valemorales07.atlassian.net/secure/RapidBoard.jspa?rapidView=1&selectedIssue=T1-10
